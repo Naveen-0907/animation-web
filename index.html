@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drivers List</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsvie.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+
+    <section class="bg-image">
+        <div class="driver-details plater-1">
+            <img src="images/Untitled (500 x 600 px) (1).png" alt="Player 1">
+            <div class="card">
+                <div class="icon"><i class="fa-solid fa-angle-right"></i></div>
+                <div>
+                    <strong>Carlos Sainz Snr</strong> <br>
+                    <span class="co-driver">Co-driver: <strong>Lucas Cruz</strong></span>
+                </div>
+                <span class="arrow"><i class="fa-solid fa-angle-right"></i></span>
+            </div>
+        </div>
+
+        <div class="driver-details plater-2">
+            <img src="images/Untitled (500 x 600 px) (2).png" alt="Player 2">
+            <div class="card">
+                <div class="icon"><i class="fa-solid fa-angle-right"></i></div>
+                <div>
+                    <strong>Sébastien Loeb</strong> <br>
+                    <span class="co-driver">Co-driver: <strong>Fabian Lurquin</strong></span>
+                </div>
+                <span class="arrow"><i class="fa-solid fa-angle-right"></i></span>
+            </div>
+        </div>
+
+        <div class="driver-details plater-3">
+            <img src="images/Untitled (500 x 600 px) (3).png" alt="Player 3">
+            <div class="card">
+                <div class="icon"><i class="fa-solid fa-angle-right"></i></div>
+                <div>
+                    <strong>Nasser Al-Attiyah</strong> <br>
+                    <span class="co-driver">Co-driver: <strong>Mathieu Baumel</strong></span>
+                </div>
+                <span class="arrow"><i class="fa-solid fa-angle-right"></i></span>
+            </div>
+        </div>
+
+        <div class="driver-details plater-4">
+            <img src="images/Untitled (500 x 600 px) (4).png" alt="Player 4">
+            <div class="card">
+                <div class="icon"><i class="fa-solid fa-angle-right"></i></div>
+                <div>
+                    <strong>Stéphane Peterhansel</strong> <br>
+                    <span class="co-driver">Co-driver: <strong>Edouard Boulanger</strong></span>
+                </div>
+                <span class="arrow"><i class="fa-solid fa-angle-right"></i></span>
+            </div>
+        </div>
+    </section>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const drivers = document.querySelectorAll(".driver-details");
+
+            function revealOnScroll() {
+                drivers.forEach(driver => {
+                    const position = driver.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight - 100;
+                    
+                    if (position < windowHeight) {
+                        driver.classList.add("show");
+                    } 
+                });
+            }
+
+            window.addEventListener("scroll", revealOnScroll);
+        });
+        gsap.registerPlugin(ScrollTrigger);
+
+document.querySelectorAll(".driver-details").forEach((player, index) => {
+    gsap.from(player, {
+        opacity: 0,
+        x: index % 2 === 0 ? -100 : 100, // Odd index (left), Even index (right)
+        duration: 1,
+        scrollTrigger: {
+            trigger: player,
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+        }
+    });
+});
+
+    </script>
+    <script src="script.js"></script>
+
+</body>
+</html>
